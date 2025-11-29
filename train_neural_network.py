@@ -38,7 +38,7 @@ def train_nn(neural_network, train_dataset, validation_dataset, optimizer, sched
         train_losses.append(avg_train_loss)
 
         if epoch_num % saving_freq == 0:
-            save_model_path = os.path.join(save_model_folder, save_model_name + f"_epoch__{epoch_num}.ckpt")
+            save_model_path = os.path.join(save_model_folder, save_model_name + f"_epoch_{epoch_num}.ckpt")
             torch.save(neural_network.state_dict(), save_model_path)
 
         neural_network.eval()
