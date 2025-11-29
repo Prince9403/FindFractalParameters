@@ -5,7 +5,7 @@ import torch
 from torch.utils.data import DataLoader
 
 
-def train_nn(neural_network, train_dataset, validation_dataset, optimizer, batch_size, num_epochs, saving_freq, save_model_name, save_model_folder):
+def train_nn(neural_network, train_dataset, validation_dataset, optimizer, scheduler, batch_size, num_epochs, saving_freq, save_model_name, save_model_folder):
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_dataloader = DataLoader(validation_dataset, batch_size=batch_size, shuffle=False)
 
@@ -51,6 +51,9 @@ def train_nn(neural_network, train_dataset, validation_dataset, optimizer, batch
             num_val_batches += 1
         avg_val_loss = total_val_loss / num_val_batches
         val_losses.append(avg_val_loss)
+
+        if scheduler is not None:
+            scheduler.step()
 
         print(f"{datetime.datetime.now()} Epoch {epoch_num}, train loss {avg_train_loss}, val loss {avg_val_loss}")
 
