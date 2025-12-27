@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import DataLoader
 
-from fractals_dataset import FractalImageadDataset
+from fractals_dataset import FractalImageDataset
 from training_example_02 import ParamPredictor
 
 
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     test_anno_fpath_2 = "dataset_preparation/fractals_2_colors/params_test_filtered_6.json"
 
     for test_anno_fpath in [test_anno_fpath_1, test_anno_fpath_2]:
-        test_dataset = FractalImageadDataset(test_anno_fpath, images_folder)
+        test_dataset = FractalImageDataset(test_anno_fpath, images_folder)
 
         test_dataloader = DataLoader(test_dataset, batch_size=8, shuffle=False)
 

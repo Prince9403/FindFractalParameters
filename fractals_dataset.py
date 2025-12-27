@@ -11,7 +11,7 @@ model_mean = [0.485, 0.456, 0.406]
 model_std = [0.229, 0.224, 0.225]
 
 
-class FractalImageadDataset(Dataset):
+class FractalImageDataset(Dataset):
     def __init__(self, annotations_filename, images_folder):
         with open(annotations_filename, "r") as fd:
             self.dict_fractals = json.load(fd)

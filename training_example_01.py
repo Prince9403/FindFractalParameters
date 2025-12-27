@@ -5,7 +5,7 @@ import torch
 import torch.optim.lr_scheduler as lr_scheduler
 from torchvision.models import resnet18
 
-from fractals_dataset import FractalImageadDataset
+from fractals_dataset import FractalImageDataset
 from train_neural_network import train_nn
 
 
@@ -21,8 +21,8 @@ if __name__ == "__main__":
     images_folder = "dataset_preparation/fractals_2_colors"
     train_anno_fpath = "dataset_preparation/fractals_2_colors/params_train_6.json"
     val_anno_fpath = "dataset_preparation/fractals_2_colors/params_val_6.json"
-    train_dataset = FractalImageadDataset(train_anno_fpath, images_folder)
-    val_dataset = FractalImageadDataset(val_anno_fpath, images_folder)
+    train_dataset = FractalImageDataset(train_anno_fpath, images_folder)
+    val_dataset = FractalImageDataset(val_anno_fpath, images_folder)
     optimizer = torch.optim.Adam(model.parameters(), lr=5.0e-4)
     scheduler = lr_scheduler.ExponentialLR(optimizer, gamma=0.8)
 
